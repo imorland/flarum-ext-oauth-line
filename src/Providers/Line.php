@@ -1,11 +1,20 @@
 <?php
 
+/*
+ * This file is part of ianm/oauth-line.
+ *
+ * Copyright (c) 2022 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\OAuthLine\Providers;
 
 use Flarum\Forum\Auth\Registration;
 use FoF\OAuth\Provider;
-use League\OAuth2\Client\Provider\AbstractProvider;
 use GNOffice\OAuth2\Client\Provider\Line as LineProvider;
+use League\OAuth2\Client\Provider\AbstractProvider;
 
 class Line extends Provider
 {
@@ -50,7 +59,7 @@ class Line extends Provider
         $picture = $user->getPicture();
 
         if ($picture) {
-            $registration->provideAvatar($picture . '/large');
+            $registration->provideAvatar($picture.'/large');
         }
     }
 }

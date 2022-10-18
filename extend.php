@@ -18,7 +18,7 @@ use IanM\OAuthLine\Providers\Line;
 return [
     (new Extend\Frontend('forum'))
         ->css(__DIR__.'/less/forum.less'),
-    
+
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
 
