@@ -11,6 +11,10 @@
         "fof/oauth": "^1.2",
         "gn-office/oauth2-line": "^1.0"
     },
+    "support": {
+        "issues": "https://github.com/imorland/flarum-ext-oauth-line/issues",
+        "source": "https://github.com/imorland/flarum-ext-oauth-line"
+    },
     "authors": [
         {
             "name": "IanM",
@@ -25,7 +29,7 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Sign in With Line",
+            "title": "Login with LINE",
             "category": "feature",
             "icon": {
                 "name": "fab fa-line",

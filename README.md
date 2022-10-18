@@ -23,5 +23,5 @@ php flarum cache:clear
 ## Links
 
 - [Packagist](https://packagist.org/packages/ianm/oauth-line)
-- [GitHub](https://github.com/ianm/oauth-line)
+- [GitHub](https://github.com/imorland/flarum-ext-oauth-line)
 - [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
