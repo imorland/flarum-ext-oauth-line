@@ -13,13 +13,13 @@ namespace IanM\OAuthLine\Providers;
 
 use Flarum\Forum\Auth\Registration;
 use FoF\OAuth\Provider;
-use GNOffice\OAuth2\Client\Provider\Line as LineProvider;
+use Illuminate\Support\Arr;
 use League\OAuth2\Client\Provider\AbstractProvider;
 
 class Line extends Provider
 {
     /**
-     * @var ALineProvider
+     * @var LineProvider
      */
     protected $provider;
 
@@ -50,16 +50,26 @@ class Line extends Provider
         ]);
     }
 
+    public function options(): array
+    {
+        return ['scope' => ['profile', 'openid', 'email']];
+    }
+
     public function suggestions(Registration $registration, $user, string $token)
     {
         $registration
             ->suggestUsername($user->getName())
             ->setPayload($user->toArray());
 
-        $picture = $user->getPicture();
+        if ($email = $user->getEmail()) {
+            $this->verifyEmail($email);
+            $registration->provideTrustedEmail($email);
+        }
 
-        if ($picture) {
+        if ($picture = $user->getPicture()) {
             $registration->provideAvatar($picture.'/large');
         }
+
+        dd($user, $registration, $token);
     }
 }

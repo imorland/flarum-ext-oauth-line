@@ -12,6 +12,8 @@ In order to enable Login with LINE, you must first register on the [Line develop
 
 Once registered, create a new `channel` of the type `LINE login`, and select `web app`. Once you've created the channel, make a note of the `Channel ID` and `Channel secret`, then navigate to the `LINE login` tab. Here enter the callback URL for your forum - this will be displayed within the `OAuth` extension settings in your admin panel and look something like `https://forum.example.com/auth/line`.
 
+If you wish to retrieve the registered email address from `LINE`, you must also complete the `OpenID Connect Email Permission` within the channel setup.
+
 Enter the `Channel ID` and `Channel secret` in the admin panel for your forum (This can be found at `{YOUR FORUM URL)/admin#/extension/fof-oauth`
 
 ## Installation
