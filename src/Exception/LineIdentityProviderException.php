@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ianm/oauth-line.
+ *
+ * Copyright (c) 2022 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\OAuthLine\Exception;
 
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
@@ -11,7 +20,7 @@ class LineIdentityProviderException extends IdentityProviderException
     {
         return static::fromResponse(
             $response,
-            (string)$response->getReasonPhrase()
+            (string) $response->getReasonPhrase()
         );
     }
 
@@ -22,6 +31,7 @@ class LineIdentityProviderException extends IdentityProviderException
         } else {
             $message = $data['error'];
         }
+
         return static::fromResponse(
             $response,
             $message
@@ -29,13 +39,13 @@ class LineIdentityProviderException extends IdentityProviderException
     }
 
     /**
-     * @param  ResponseInterface $response
-     * @param  string|null $message
+     * @param ResponseInterface $response
+     * @param string|null       $message
      *
      * @return static
      */
     protected static function fromResponse(ResponseInterface $response, $message = null)
     {
-        return new static($message, $response->getStatusCode(), (string)$response->getBody());
+        return new static($message, $response->getStatusCode(), (string) $response->getBody());
     }
 }

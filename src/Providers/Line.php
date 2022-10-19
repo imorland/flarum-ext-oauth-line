@@ -13,7 +13,6 @@ namespace IanM\OAuthLine\Providers;
 
 use Flarum\Forum\Auth\Registration;
 use FoF\OAuth\Provider;
-use Illuminate\Support\Arr;
 use League\OAuth2\Client\Provider\AbstractProvider;
 
 class Line extends Provider

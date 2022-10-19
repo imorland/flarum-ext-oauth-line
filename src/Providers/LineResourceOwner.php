@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ianm/oauth-line.
+ *
+ * Copyright (c) 2022 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\OAuthLine\Providers;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
@@ -10,7 +19,7 @@ class LineResourceOwner implements ResourceOwnerInterface
     use ArrayAccessorTrait;
 
     /**
-     * Raw response
+     * Raw response.
      *
      * @var array
      */
@@ -27,7 +36,7 @@ class LineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner id
+     * Get resource owner id.
      *
      * @return string|null
      */
@@ -37,7 +46,7 @@ class LineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner name
+     * Get resource owner name.
      *
      * @return string|null
      */
@@ -47,7 +56,7 @@ class LineResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner picture url
+     * Get resource owner picture url.
      *
      * @return string|null
      */
@@ -70,5 +79,4 @@ class LineResourceOwner implements ResourceOwnerInterface
     {
         return $this->response;
     }
-
 }

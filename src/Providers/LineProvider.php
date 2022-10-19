@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ianm/oauth-line.
+ *
+ * Copyright (c) 2022 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\OAuthLine\Providers;
 
 use GuzzleHttp\Client;
@@ -39,6 +48,7 @@ class LineProvider extends AbstractProvider
      * Returns the base URL for requesting an access token.
      *
      * @param array $params
+     *
      * @return string
      */
     public function getBaseAccessTokenUrl(array $params)
@@ -50,6 +60,7 @@ class LineProvider extends AbstractProvider
      * Returns the URL for requesting the resource owner's details.
      *
      * @param AccessToken $token
+     *
      * @return string
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
@@ -78,7 +89,8 @@ class LineProvider extends AbstractProvider
     /**
      * Returns authorization parameters based on provided options.
      *
-     * @param  array $options
+     * @param array $options
+     *
      * @return array Authorization parameters
      */
     protected function getAuthorizationParameters(array $options)
@@ -105,9 +117,11 @@ class LineProvider extends AbstractProvider
     /**
      * Checks a provider response for errors.
      *
+     * @param ResponseInterface $response
+     * @param array|string      $data     Parsed response data
+     *
      * @throws IdentityProviderException
-     * @param  ResponseInterface $response
-     * @param  array|string $data Parsed response data
+     *
      * @return void
      */
     protected function checkResponse(ResponseInterface $response, $data)
@@ -122,7 +136,8 @@ class LineProvider extends AbstractProvider
     /**
      * Requests resource owner details.
      *
-     * @param  AccessToken $token
+     * @param AccessToken $token
+     *
      * @return mixed
      */
     protected function fetchResourceOwnerDetails(AccessToken $token)
@@ -142,7 +157,7 @@ class LineProvider extends AbstractProvider
         if (!isset($response['email'])) {
             $response['email'] = $this->getEmail($token->getValues()['id_token'], $this->nonce);
         }
-        
+
         return $response;
     }
 
@@ -150,8 +165,9 @@ class LineProvider extends AbstractProvider
      * Generates a resource owner object from a successful resource owner
      * details request.
      *
-     * @param  array $response
-     * @param  AccessToken $token
+     * @param array       $response
+     * @param AccessToken $token
+     *
      * @return LineResourceOwner
      */
     protected function createResourceOwner(array $response, AccessToken $token)
@@ -172,9 +188,11 @@ class LineProvider extends AbstractProvider
     }
 
     /**
-     * Get user email
-     * @param string $jwt ID Token(JWT)
+     * Get user email.
+     *
+     * @param string $jwt   ID Token(JWT)
      * @param string $nonce
+     *
      * @return string|null
      */
     public function getEmail($jwt, $nonce)
@@ -186,13 +204,13 @@ class LineProvider extends AbstractProvider
         try {
             $response = $client->post($url, [
                 'form_params' => [
-                    'id_token' => $jwt,
+                    'id_token'  => $jwt,
                     'client_id' => $this->clientId,
-                    'nonce' => $nonce
+                    'nonce'     => $nonce,
                 ],
                 'headers' => [
                     'Content-Type' => 'application/x-www-form-urlencoded',
-                ]
+                ],
             ]);
         } catch (ClientException $e) {
             $contents = $e->getResponse()->getBody()->getContents();
@@ -203,6 +221,7 @@ class LineProvider extends AbstractProvider
         $parsed_response = $this->parseResponse($response);
 
         $email = Arr::get($parsed_response, 'email');
+
         return $email;
     }
 }
