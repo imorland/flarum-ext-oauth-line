@@ -68,7 +68,5 @@ class Line extends Provider
         if ($picture = $user->getPicture()) {
             $registration->provideAvatar($picture.'/large');
         }
-
-        dd($user, $registration, $token);
     }
 }
