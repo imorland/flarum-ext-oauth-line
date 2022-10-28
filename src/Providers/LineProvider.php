@@ -108,6 +108,8 @@ class LineProvider extends AbstractProvider
         // Store the nonce as it may need to be accessed later on.
         $this->nonce = $options['nonce'];
 
+        $options['bot_prompt'] = 'normal';
+
         // 親クラスのパラメータを追加
         $options = parent::getAuthorizationParameters($options);
 
