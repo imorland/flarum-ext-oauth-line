@@ -108,9 +108,6 @@ class LineProvider extends AbstractProvider
         // Store the nonce as it may need to be accessed later on.
         $this->nonce = $options['nonce'];
 
-        $options['bot_prompt'] = 'normal';
-
-        // 親クラスのパラメータを追加
         $options = parent::getAuthorizationParameters($options);
 
         return $options;
@@ -225,5 +222,22 @@ class LineProvider extends AbstractProvider
         $email = Arr::get($parsed_response, 'email');
 
         return $email;
+    }
+
+    public function isBotFriend(string $accessToken): bool
+    {
+        $url = 'https://api.line.me/friendship/v1/status';
+
+        $client = new Client();
+
+        $response = $client->get($url, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken
+            ]
+            ]);
+
+        $parsedResponse = $this->parseResponse($response);
+
+        return (bool) Arr::get($parsedResponse, 'friendFlag');
     }
 }

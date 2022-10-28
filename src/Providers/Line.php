@@ -51,7 +51,10 @@ class Line extends Provider
 
     public function options(): array
     {
-        return ['scope' => ['profile', 'openid', 'email']];
+        return [
+            'scope' => ['profile', 'openid', 'email'],
+            'bot_prompt' => 'normal',
+        ];
     }
 
     public function suggestions(Registration $registration, $user, string $token)
