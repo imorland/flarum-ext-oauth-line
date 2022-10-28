@@ -232,9 +232,9 @@ class LineProvider extends AbstractProvider
 
         $response = $client->get($url, [
             'headers' => [
-                'Authorization' => 'Bearer ' . $accessToken
-            ]
-            ]);
+                'Authorization' => 'Bearer '.$accessToken,
+            ],
+        ]);
 
         $parsedResponse = $this->parseResponse($response);
 

@@ -52,7 +52,7 @@ class Line extends Provider
     public function options(): array
     {
         return [
-            'scope' => ['profile', 'openid', 'email'],
+            'scope'      => ['profile', 'openid', 'email'],
             'bot_prompt' => 'normal',
         ];
     }
