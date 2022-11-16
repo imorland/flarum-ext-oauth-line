@@ -8,7 +8,7 @@
     "license": "MIT",
     "require": {
         "flarum/core": "^1.3.0",
-        "fof/oauth": "^1.2"
+        "fof/oauth": "^1.3"
     },
     "support": {
         "issues": "https://github.com/imorland/flarum-ext-oauth-line/issues",
