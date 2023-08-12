@@ -1,0 +1,19 @@
+fof-oauth:
+  admin:
+    settings:
+      providers:
+        line:
+          description: Зарегистрируйте свой форум в LINE Developers Console {link}
+          client_id_label: Идентификатор канала
+          client_secret_label: Секрет канала
+
+  forum:
+    log_in:
+      with_line_button: '=> fof-oauth.forum.log_in.with_button'
+
+    providers:
+      line: '=> fof-oauth.lib.providers.line'
+
+  lib:
+    providers:
+      line: LINE
